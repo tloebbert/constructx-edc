@@ -1,6 +1,6 @@
 {
   "version": "1",
-  "name": "con-x-local-test",
+  "name": "con-x-client-server-test",
   "type": "collection",
   "ignore": [
     "node_modules",
