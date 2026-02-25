@@ -33,3 +33,45 @@ settings {
   encodeUrl: true
   timeout: 0
 }
+
+example {
+  name: Create Geocoder Service Assert
+  
+  request: {
+    url: {{PROVIDER_MANAGEMENT}}/v3/assets
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "@context": {
+          "@vocab": "https://w3id.org/edc/v0.0.1/ns/"
+        },
+        "@id": "assert-geocoder-service",
+        "properties": {
+          "name": "Geocoder Service Assert",
+          "contenttype": "application/json"
+        },
+        "dataAddress": {
+          "type": "HttpData",
+          "name": "Geocoder",
+          "baseUrl": "https://d.map.psi.de/boudeuse/match/v1",
+          "proxyPath": "true"
+        }
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
