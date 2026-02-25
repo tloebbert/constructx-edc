@@ -162,7 +162,7 @@ services:
       - web.http.control.port=9550
       - web.http.control.path=/control
       - edc.hostname=provider-dataplane-con-x.psi.de
-      - edc.dpf.selector.url=http://provider-dataplane-con-x.psi.de:39050/control/v1/dataplanes
+      - edc.dpf.selector.url=http://provider-controlplane-con-x.psi.de:39050/control/v1/dataplanes
       - edc.data.plane.self.unregistration=true
       - edc.datasource.default.url=jdbc:postgresql://postgres-server:5432/prov_dpl
       - edc.datasource.default.user=admin
