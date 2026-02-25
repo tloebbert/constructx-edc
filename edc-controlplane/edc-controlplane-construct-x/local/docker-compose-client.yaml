@@ -17,7 +17,6 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 #
-# TODO: Change shared service ports.
 name: con-x-client
 services:
   postgres-client:
