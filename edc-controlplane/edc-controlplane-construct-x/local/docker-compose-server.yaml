@@ -44,8 +44,6 @@ services:
     depends_on:
       postgres-server:
         condition: service_healthy
-      vault-server:
-        condition: service_healthy
     ports:
       - "1046:1045"         # debugger
       - "21000:80"          # did API           -> /
@@ -65,7 +63,7 @@ services:
       - edc.datasource.default.url=jdbc:postgresql://postgres-server:5432/prov_ih_db
       - edc.datasource.default.user=admin
       - edc.datasource.default.password=password
-      - edc.vault.hashicorp.url=http://vault-server:8200
+      - edc.vault.hashicorp.url=http://vault-con-x.psi.de:8200
       - edc.vault.hashicorp.health.check.enabled=true
       - edc.vault.hashicorp.token=vaultsecret0123456789
     volumes:
@@ -77,6 +75,7 @@ services:
       - "provider-idhub-con-x.psi.de:88.99.97.141"
       - "provider-controlplane-con-x.psi.de:88.99.97.141"
       - "provider-dataplane-con-x.psi.de:88.99.97.141"
+      - "vault-con-x.psi.de:88.99.97.141"
 
   provider-controlplane:
     container_name: provider-controlplane-con-x.psi.de
@@ -96,13 +95,13 @@ services:
       - tx.edc.postgresql.migration.policy-monitor.enabled=false
       - tx.edc.postgresql.migration.policy.enabled=false
       - tx.edc.postgresql.migration.transferprocess.enabled=false
-      - edc.iam.trusted-issuer.example.id=did:web:issuer-service-con-x.psi.de:con-x-issuer
+      - edc.iam.trusted-issuer.example.id=did:web:issuer-service-con-x.psi.de%3A10000:con-x-issuer
       - edc.iam.did.web.use.https=false
       - edc.iam.sts.oauth.client.secret.alias=providersecret
       - edc.iam.credential.revocation.mimetype=application/json
       - edc.iam.sts.oauth.token.url=http://provider-idhub-con-x.psi.de:9292/api/sts/token
-      - edc.iam.sts.oauth.client.id=did:web:provider-idhub-con-x.psi.de:user:provider
-      - edc.iam.issuer.id=did:web:provider-idhub-con-x.psi.de:user:provider
+      - edc.iam.sts.oauth.client.id=did:web:provider-idhub-con-x.psi.de%3A21000:user:provider
+      - edc.iam.issuer.id=did:web:provider-idhub-con-x.psi.de%3A21000:user:provider
       - web.http.port=9000
       - web.http.path=/api
       - web.http.management.port=9010
@@ -114,21 +113,19 @@ services:
       - web.http.control.port=9050
       - web.http.control.path=/control
       - edc.hostname=provider-controlplane-con-x.psi.de
-      - edc.participant.id=did:web:provider-idhub-con-x.psi.de:user:provider
+      - edc.participant.id=did:web:provider-idhub-con-x.psi.de%3A21000:user:provider
       - edc.dsp.callback.address=http://provider-controlplane-con-x.psi.de:9020/dsp
       - edc.sql.schema.autocreate=true
       - edc.datasource.default.url=jdbc:postgresql://postgres-server:5432/prov_cpl
       - edc.datasource.default.user=admin
       - edc.datasource.default.password=password
-      - edc.vault.hashicorp.url=http://vault-server:8200
+      - edc.vault.hashicorp.url=http://vault-con-x.psi.de:8200
       - edc.vault.hashicorp.health.check.enabled=true
       - edc.vault.hashicorp.token=vaultsecret0123456789
     volumes:
       - ./additional_config/logging.properties:/app/dataspaceconnector-configuration.properties
     depends_on:
       postgres-server:
-        condition: service_healthy
-      vault-server:
         condition: service_healthy
     entrypoint: [ "java", "-jar", "edc-runtime.jar", "--log-level=DEBUG" ]
     ports:
@@ -143,6 +140,7 @@ services:
       - "provider-idhub-con-x.psi.de:88.99.97.141"
       - "provider-controlplane-con-x.psi.de:88.99.97.141"
       - "provider-dataplane-con-x.psi.de:88.99.97.141"
+      - "vault-con-x.psi.de:88.99.97.141"
 
   provider-dataplane:
     container_name: provider-dataplane-con-x.psi.de
@@ -165,21 +163,19 @@ services:
       - edc.sql.schema.autocreate=true
       - edc.transfer.proxy.token.signer.privatekey.alias=prov_priv
       - edc.transfer.proxy.token.verifier.publickey.alias=prov_pub
-      - edc.vault.hashicorp.url=http://vault-server:8200
+      - edc.vault.hashicorp.url=http://vault-con-x.psi.de:8200
       - edc.vault.hashicorp.health.check.enabled=true
       - edc.vault.hashicorp.token=vaultsecret0123456789
-      - edc.iam.trusted-issuer.example.id=did:web:issuer-service-con-x.psi.de:con-x-issuer
+      - edc.iam.trusted-issuer.example.id=did:web:issuer-service-con-x.psi.de%3A10000:con-x-issuer
       - edc.iam.did.web.use.https=false
       - edc.iam.sts.oauth.client.secret.alias=providersecret
       - edc.iam.credential.revocation.mimetype=application/json
       - edc.iam.sts.oauth.token.url=http://provider-idhub-con-x.psi.de:9292/api/sts/token
-      - edc.iam.sts.oauth.client.id=did:web:provider-idhub-con-x.psi.de:user:provider
-      - edc.iam.issuer.id=did:web:provider-idhub-con-x.psi.de:user:provider
+      - edc.iam.sts.oauth.client.id=did:web:provider-idhub-con-x.psi.de%3A21000:user:provider
+      - edc.iam.issuer.id=did:web:provider-idhub-con-x.psi.de%3A21000:user:provider
 
     depends_on:
       postgres-server:
-        condition: service_healthy
-      vault-server:
         condition: service_healthy
     entrypoint: [ "java", "-jar", "edc-runtime.jar", "--log-level=DEBUG" ]
     ports:
@@ -192,6 +188,7 @@ services:
       - "provider-idhub-con-x.psi.de:88.99.97.141"
       - "provider-controlplane-con-x.psi.de:88.99.97.141"
       - "provider-dataplane-con-x.psi.de:88.99.97.141"
+      - "vault-con-x.psi.de:88.99.97.141"
 
 networks:
   con-x-server-network:
