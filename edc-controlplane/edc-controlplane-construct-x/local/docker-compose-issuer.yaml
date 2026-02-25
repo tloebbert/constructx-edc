@@ -31,10 +31,10 @@ services:
       - "10000:80"        # did API           -> /
       - "10100:15151"     # identity API      -> /api/identity
       - "10200:15152"     # issueradmin API   -> /api/issuer
-    #      - "9292:9292"      # sts API           -> /api/sts
-    #      - "8181:8181"      # default API       -> /api
-    #      - "9999:9999"      # statuslist API    -> /statuslist
-    #      - "13132:13132"    # issuance API      -> /api/issuance
+      - "9292:9292"      # sts API           -> /api/sts
+      - "8181:8181"      # default API       -> /api
+      - "9999:9999"      # statuslist API    -> /statuslist
+      - "13132:13132"    # issuance API      -> /api/issuance
 
     environment:
       - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:1044
