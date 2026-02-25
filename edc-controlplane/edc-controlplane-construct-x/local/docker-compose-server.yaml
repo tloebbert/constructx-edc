@@ -20,54 +20,6 @@
 
 name: con-x-server
 services:
-  local-issuer-service:
-    container_name: issuer-service-con-x.psi.de
-    image: issuerservice-dev:latest
-    pull_policy: never
-    depends_on:
-      postgres-server:
-        condition: service_healthy
-      vault-server:
-        condition: service_healthy
-    ports:
-      - "1044:1044"       # debugger
-      - "10000:80"        # did API           -> /
-      - "10100:15151"     # identity API      -> /api/identity
-      - "10200:15152"     # issueradmin API   -> /api/issuer
-    #      - "9292:9292"      # sts API           -> /api/sts
-    #      - "8181:8181"      # default API       -> /api
-    #      - "9999:9999"      # statuslist API    -> /statuslist
-    #      - "13132:13132"    # issuance API      -> /api/issuance
-
-    environment:
-      - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:1044
-      - edc.statuslist.callback.address=http://issuer-service-con-x.psi.de:9999/statuslist
-      - edc.hostname=issuer-service-con-x.psi.de
-      - edc.ih.issuer.dev.defaultconfig=/app/setup.json
-      - edc.issuer.issuance.send.retry.limit=0
-      - edc.iam.did.web.use.https=false
-      - edc.ih.api.superuser.id=admin
-      - edc.ih.api.superuser.key=YWRtaW4.adminKey
-      - edc.issuer.statuslist.signing.key.alias=foo
-      - web.http.did.port=80
-      - edc.sql.schema.autocreate=true
-      - edc.datasource.default.url=jdbc:postgresql://postgres-server:5432/iss_db
-      - edc.datasource.default.user=admin
-      - edc.datasource.default.password=password
-      - edc.vault.hashicorp.url=http://vault-server:8200
-      - edc.vault.hashicorp.health.check.enabled=true
-      - edc.vault.hashicorp.token=vaultsecret0123456789
-    volumes:
-      - ./additional_config/mc-cred-def.json:/app/setup.json
-      - ./additional_config/logging.properties:/app/logging.properties
-    networks:
-      - con-x-server-network
-    extra_hosts:
-      - "issuer-service-con-x.psi.de:88.99.97.141"
-      - "provider-idhub-con-x.psi.de:88.99.97.141"
-      - "provider-controlplane-con-x.psi.de:88.99.97.141"
-      - "provider-dataplane-con-x.psi.de:88.99.97.141"
-
   postgres-server:
     container_name: postgres-server
     image: postgres:16.4-alpine
@@ -84,52 +36,6 @@ services:
       retries: 20
     networks:
       - con-x-server-network
-
-  vault-server:
-    container_name: vault-server
-    image: vault:1.13.3
-    pull_policy: if_not_present
-    command: server -dev -dev-root-token-id=vaultsecret0123456789 -dev-listen-address=0.0.0.0:8200
-    environment:
-      VAULT_ADDR: http://0.0.0.0:8200
-      SKIP_SETCAP: "true"
-      SKIP_CHOWN: "true"
-    healthcheck:
-      test: [ "CMD", "sh", "-c", "VAULT_ADDR=http://127.0.0.1:8200 vault status >/dev/null 2>&1" ]
-      interval: 4s
-      timeout: 3s
-      retries: 20
-    ports:
-      - "8200:8200"
-    networks:
-      - con-x-server-network
-    extra_hosts:
-      - "issuer-service-con-x.psi.de:88.99.97.141"
-      - "provider-idhub-con-x.psi.de:88.99.97.141"
-      - "provider-controlplane-con-x.psi.de:88.99.97.141"
-      - "provider-dataplane-con-x.psi.de:88.99.97.141"
-
-  vault-init-server:
-    container_name: vault-init-server
-    image: alpine:3.19
-    pull_policy: if_not_present
-    depends_on:
-      vault-server:
-        condition: service_healthy
-    environment:
-      VAULT_ADDR: http://vault-server:8200
-      VAULT_TOKEN: vaultsecret0123456789
-    volumes:
-      - ./additional_config/vault-init.sh:/scripts/init.sh:ro
-    entrypoint: [ "sh", "-c", "apk add --no-check-certificate --no-cache curl jq openssl && sh /scripts/init.sh" ]
-    restart: "no"
-    networks:
-      - con-x-server-network
-    extra_hosts:
-      - "issuer-service-con-x.psi.de:88.99.97.141"
-      - "provider-idhub-con-x.psi.de:88.99.97.141"
-      - "provider-controlplane-con-x.psi.de:88.99.97.141"
-      - "provider-dataplane-con-x.psi.de:88.99.97.141"
 
   provider-idhub:
     container_name: provider-idhub-con-x.psi.de
