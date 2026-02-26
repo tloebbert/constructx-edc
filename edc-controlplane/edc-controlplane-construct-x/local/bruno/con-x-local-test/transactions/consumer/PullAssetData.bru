@@ -4,10 +4,21 @@ meta {
   seq: 6
 }
 
-get {
+post {
   url: {{PROVIDER_DATAPLANE_PUBLIC}}
-  body: none
+  body: json
   auth: inherit
+}
+
+body:json {
+  {
+    "addresses": [
+      { 
+        "country-code": "de",
+        "city": "Berlin"
+      }
+    ]
+  }
 }
 
 script:pre-request {
