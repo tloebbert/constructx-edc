@@ -188,6 +188,8 @@ services:
     ports:
       - "5007:5005"   # Debugger
       - "9500:9500" # Public API
+      - "9510:9510" # Management API
+      - "9550:9550" # Control API
     networks:
       - con-x-server-network
     extra_hosts:
