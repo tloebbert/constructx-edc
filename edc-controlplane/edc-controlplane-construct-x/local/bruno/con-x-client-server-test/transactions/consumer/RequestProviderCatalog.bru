@@ -23,7 +23,7 @@ body:json {
 }
 
 script:post-response {
-  const offerId = res.getBody()['dcat:dataset'][0]['odrl:hasPolicy']['@id'];
+  const offerId = res.getBody()['dcat:dataset']['odrl:hasPolicy']['@id'];
   
   bru.setEnvVar("offerId", offerId);
 }
