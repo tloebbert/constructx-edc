@@ -60,14 +60,14 @@ services:
     networks:
       - con-x-issuer-network
     extra_hosts:
-      - "vault-con-x.psi.de:88.99.97.141"
-      - "issuer-service-con-x.psi.de:88.99.97.141"
-      - "provider-idhub-con-x.psi.de:88.99.97.141"
-      - "provider-controlplane-con-x.psi.de:88.99.97.141"
-      - "provider-dataplane-con-x.psi.de:88.99.97.141"
-      - "consumer-idhub-con-x.psi.de:88.99.97.141"
-      - "consumer-controlplane-con-x.psi.de:88.99.97.141"
-      - "consumer-dataplane-con-x.psi.de:88.99.97.141"
+      - "vault-con-x.psi.de:${ISSUER_IP}"
+      - "issuer-service-con-x.psi.de:${ISSUER_IP}"
+      - "provider-idhub-con-x.psi.de:${PROVIDER_IP}"
+      - "provider-controlplane-con-x.psi.de:${PROVIDER_IP}"
+      - "provider-dataplane-con-x.psi.de:${PROVIDER_IP}"
+      - "consumer-idhub-con-x.psi.de:${CONSUMER_IP}"
+      - "consumer-controlplane-con-x.psi.de:${CONSUMER_IP}"
+      - "consumer-dataplane-con-x.psi.de:${CONSUMER_IP}"
 
   vault-service:
     container_name: vault-service
@@ -88,14 +88,14 @@ services:
     networks:
       - con-x-issuer-network
     extra_hosts:
-      - "vault-con-x.psi.de:88.99.97.141"
-      - "issuer-service-con-x.psi.de:88.99.97.141"
-      - "provider-idhub-con-x.psi.de:88.99.97.141"
-      - "provider-controlplane-con-x.psi.de:88.99.97.141"
-      - "provider-dataplane-con-x.psi.de:88.99.97.141"
-      - "consumer-idhub-con-x.psi.de:88.99.97.141"
-      - "consumer-controlplane-con-x.psi.de:88.99.97.141"
-      - "consumer-dataplane-con-x.psi.de:88.99.97.141"
+      - "vault-con-x.psi.de:${ISSUER_IP}"
+      - "issuer-service-con-x.psi.de:${ISSUER_IP}"
+      - "provider-idhub-con-x.psi.de:${PROVIDER_IP}"
+      - "provider-controlplane-con-x.psi.de:${PROVIDER_IP}"
+      - "provider-dataplane-con-x.psi.de:${PROVIDER_IP}"
+      - "consumer-idhub-con-x.psi.de:${CONSUMER_IP}"
+      - "consumer-controlplane-con-x.psi.de:${CONSUMER_IP}"
+      - "consumer-dataplane-con-x.psi.de:${CONSUMER_IP}"
 
   vault-init:
     container_name: vault-init
@@ -114,14 +114,14 @@ services:
     networks:
       - con-x-issuer-network
     extra_hosts:
-      - "vault-con-x.psi.de:88.99.97.141"
-      - "issuer-service-con-x.psi.de:88.99.97.141"
-      - "provider-idhub-con-x.psi.de:88.99.97.141"
-      - "provider-controlplane-con-x.psi.de:88.99.97.141"
-      - "provider-dataplane-con-x.psi.de:88.99.97.141"
-      - "consumer-idhub-con-x.psi.de:88.99.97.141"
-      - "consumer-controlplane-con-x.psi.de:88.99.97.141"
-      - "consumer-dataplane-con-x.psi.de:88.99.97.141"
+      - "vault-con-x.psi.de:${ISSUER_IP}"
+      - "issuer-service-con-x.psi.de:${ISSUER_IP}"
+      - "provider-idhub-con-x.psi.de:${PROVIDER_IP}"
+      - "provider-controlplane-con-x.psi.de:${PROVIDER_IP}"
+      - "provider-dataplane-con-x.psi.de:${PROVIDER_IP}"
+      - "consumer-idhub-con-x.psi.de:${CONSUMER_IP}"
+      - "consumer-controlplane-con-x.psi.de:${CONSUMER_IP}"
+      - "consumer-dataplane-con-x.psi.de:${CONSUMER_IP}"
 
 networks:
   con-x-issuer-network:
