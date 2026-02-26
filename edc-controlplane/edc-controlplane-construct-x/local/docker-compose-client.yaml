@@ -154,11 +154,11 @@ services:
     pull_policy: never
     environment:
       - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0.0:5005
-      - web.http.public.port=9500
+      - web.http.public.port=9600
       - web.http.public.path=/public
-      - web.http.management.port=9510
+      - web.http.management.port=9610
       - web.http.management.path=/management
-      - web.http.control.port=9550
+      - web.http.control.port=9650
       - web.http.control.path=/control
       - edc.hostname=consumer-dataplane-con-x.psi.de
       - edc.dpf.selector.url=http://consumer-controlplane-con-x.psi.de:29050/control/v1/dataplanes
@@ -185,7 +185,9 @@ services:
     entrypoint: [ "java", "-jar", "edc-runtime.jar", "--log-level=DEBUG" ]
     ports:
       - "5008:5005"   # Debugger
-      - "9600:9500" # Public API
+      - "9600:9600" # Public API
+      - "9610:9610" # Management API
+      - "9650:9650" # Control API
     networks:
       - con-x-client-network
     extra_hosts:
