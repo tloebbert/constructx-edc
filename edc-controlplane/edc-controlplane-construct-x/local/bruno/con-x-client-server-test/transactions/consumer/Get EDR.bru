@@ -17,6 +17,9 @@ headers {
 script:post-response {
   const authToken = res.getBody().authorization; 
   bru.setEnvVar("pullSecret", authToken);
+  
+  const endpoint = res.getBody().endpoint; 
+  bru.setEnvVar("EDR_PUBLIC_ENDPOINT", endpoint);
 }
 
 settings {
