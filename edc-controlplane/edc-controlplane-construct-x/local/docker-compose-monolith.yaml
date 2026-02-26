@@ -1,0 +1,5 @@
+name: con-x-monolith
+include:
+  - docker-compose-issuer.yaml
+  - docker-compose-server.yaml
+  - docker-compose-client.yaml
