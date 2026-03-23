@@ -76,9 +76,6 @@ services:
       - "provider-idhub-con-x.psi.de:88.99.97.141"
       - "provider-controlplane-con-x.psi.de:88.99.97.141"
       - "provider-dataplane-con-x.psi.de:88.99.97.141"
-      - "consumer-idhub-con-x.psi.de:88.99.97.141"
-      - "consumer-controlplane-con-x.psi.de:88.99.97.141"
-      - "consumer-dataplane-con-x.psi.de:88.99.97.141"
 
   provider-controlplane:
     container_name: provider-controlplane-con-x.psi.de
@@ -145,9 +142,6 @@ services:
       - "provider-idhub-con-x.psi.de:88.99.97.141"
       - "provider-controlplane-con-x.psi.de:88.99.97.141"
       - "provider-dataplane-con-x.psi.de:88.99.97.141"
-      - "consumer-idhub-con-x.psi.de:88.99.97.141"
-      - "consumer-controlplane-con-x.psi.de:88.99.97.141"
-      - "consumer-dataplane-con-x.psi.de:88.99.97.141"
 
   provider-dataplane:
     container_name: provider-dataplane-con-x.psi.de
@@ -198,9 +192,6 @@ services:
       - "provider-idhub-con-x.psi.de:88.99.97.141"
       - "provider-controlplane-con-x.psi.de:88.99.97.141"
       - "provider-dataplane-con-x.psi.de:88.99.97.141"
-      - "consumer-idhub-con-x.psi.de:88.99.97.141"
-      - "consumer-controlplane-con-x.psi.de:88.99.97.141"
-      - "consumer-dataplane-con-x.psi.de:88.99.97.141"
 
 networks:
   con-x-server-network:

@@ -65,9 +65,6 @@ services:
       - "provider-idhub-con-x.psi.de:88.99.97.141"
       - "provider-controlplane-con-x.psi.de:88.99.97.141"
       - "provider-dataplane-con-x.psi.de:88.99.97.141"
-      - "consumer-idhub-con-x.psi.de:88.99.97.141"
-      - "consumer-controlplane-con-x.psi.de:88.99.97.141"
-      - "consumer-dataplane-con-x.psi.de:88.99.97.141"
 
   vault-service:
     container_name: vault-service
@@ -93,9 +90,6 @@ services:
       - "provider-idhub-con-x.psi.de:88.99.97.141"
       - "provider-controlplane-con-x.psi.de:88.99.97.141"
       - "provider-dataplane-con-x.psi.de:88.99.97.141"
-      - "consumer-idhub-con-x.psi.de:88.99.97.141"
-      - "consumer-controlplane-con-x.psi.de:88.99.97.141"
-      - "consumer-dataplane-con-x.psi.de:88.99.97.141"
 
   vault-init:
     container_name: vault-init
@@ -119,9 +113,7 @@ services:
       - "provider-idhub-con-x.psi.de:88.99.97.141"
       - "provider-controlplane-con-x.psi.de:88.99.97.141"
       - "provider-dataplane-con-x.psi.de:88.99.97.141"
-      - "consumer-idhub-con-x.psi.de:88.99.97.141"
-      - "consumer-controlplane-con-x.psi.de:88.99.97.141"
-      - "consumer-dataplane-con-x.psi.de:88.99.97.141"
+
 
 networks:
   con-x-issuer-network:
