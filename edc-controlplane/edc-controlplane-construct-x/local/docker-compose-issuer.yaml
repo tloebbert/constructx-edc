@@ -62,9 +62,6 @@ services:
     extra_hosts:
       - "vault-con-x.psi.de:88.99.97.141"
       - "issuer-service-con-x.psi.de:88.99.97.141"
-      - "provider-idhub-con-x.psi.de:88.99.97.141"
-      - "provider-controlplane-con-x.psi.de:88.99.97.141"
-      - "provider-dataplane-con-x.psi.de:88.99.97.141"
 
   vault-service:
     container_name: vault-service
@@ -87,9 +84,6 @@ services:
     extra_hosts:
       - "vault-con-x.psi.de:88.99.97.141"
       - "issuer-service-con-x.psi.de:88.99.97.141"
-      - "provider-idhub-con-x.psi.de:88.99.97.141"
-      - "provider-controlplane-con-x.psi.de:88.99.97.141"
-      - "provider-dataplane-con-x.psi.de:88.99.97.141"
 
   vault-init:
     container_name: vault-init
@@ -110,9 +104,6 @@ services:
     extra_hosts:
       - "vault-con-x.psi.de:88.99.97.141"
       - "issuer-service-con-x.psi.de:88.99.97.141"
-      - "provider-idhub-con-x.psi.de:88.99.97.141"
-      - "provider-controlplane-con-x.psi.de:88.99.97.141"
-      - "provider-dataplane-con-x.psi.de:88.99.97.141"
 
 
 networks:

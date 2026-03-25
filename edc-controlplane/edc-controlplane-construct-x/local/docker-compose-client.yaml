@@ -72,9 +72,6 @@ services:
     extra_hosts:
       - "vault-con-x.psi.de:88.99.97.141"
       - "issuer-service-con-x.psi.de:88.99.97.141"
-      - "provider-idhub-con-x.psi.de:88.99.97.141"
-      - "provider-controlplane-con-x.psi.de:88.99.97.141"
-      - "provider-dataplane-con-x.psi.de:88.99.97.141"
 
   consumer-controlplane:
     container_name: consumer-controlplane-con-x.psi.de
@@ -138,9 +135,6 @@ services:
     extra_hosts:
       - "vault-con-x.psi.de:88.99.97.141"
       - "issuer-service-con-x.psi.de:88.99.97.141"
-      - "provider-idhub-con-x.psi.de:88.99.97.141"
-      - "provider-controlplane-con-x.psi.de:88.99.97.141"
-      - "provider-dataplane-con-x.psi.de:88.99.97.141"
 
   consumer-dataplane:
     container_name: consumer-dataplane-con-x.psi.de
@@ -187,9 +181,6 @@ services:
     extra_hosts:
       - "vault-con-x.psi.de:88.99.97.141"
       - "issuer-service-con-x.psi.de:88.99.97.141"
-      - "provider-idhub-con-x.psi.de:88.99.97.141"
-      - "provider-controlplane-con-x.psi.de:88.99.97.141"
-      - "provider-dataplane-con-x.psi.de:88.99.97.141"
 
 networks:
   con-x-client-network:
