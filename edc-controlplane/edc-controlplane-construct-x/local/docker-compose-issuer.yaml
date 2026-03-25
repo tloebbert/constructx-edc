@@ -62,9 +62,6 @@ services:
     extra_hosts:
       - "vault-con-x.psi.de:88.99.97.141"
       - "issuer-service-con-x.psi.de:88.99.97.141"
-      - "provider-idhub-con-x.psi.de:88.99.97.141"
-      - "provider-controlplane-con-x.psi.de:88.99.97.141"
-      - "provider-dataplane-con-x.psi.de:88.99.97.141"
       - "consumer-idhub-con-x.psi.de:88.99.97.141"
       - "consumer-controlplane-con-x.psi.de:88.99.97.141"
       - "consumer-dataplane-con-x.psi.de:88.99.97.141"
@@ -90,9 +87,6 @@ services:
     extra_hosts:
       - "vault-con-x.psi.de:88.99.97.141"
       - "issuer-service-con-x.psi.de:88.99.97.141"
-      - "provider-idhub-con-x.psi.de:88.99.97.141"
-      - "provider-controlplane-con-x.psi.de:88.99.97.141"
-      - "provider-dataplane-con-x.psi.de:88.99.97.141"
       - "consumer-idhub-con-x.psi.de:88.99.97.141"
       - "consumer-controlplane-con-x.psi.de:88.99.97.141"
       - "consumer-dataplane-con-x.psi.de:88.99.97.141"
@@ -116,9 +110,6 @@ services:
     extra_hosts:
       - "vault-con-x.psi.de:88.99.97.141"
       - "issuer-service-con-x.psi.de:88.99.97.141"
-      - "provider-idhub-con-x.psi.de:88.99.97.141"
-      - "provider-controlplane-con-x.psi.de:88.99.97.141"
-      - "provider-dataplane-con-x.psi.de:88.99.97.141"
       - "consumer-idhub-con-x.psi.de:88.99.97.141"
       - "consumer-controlplane-con-x.psi.de:88.99.97.141"
       - "consumer-dataplane-con-x.psi.de:88.99.97.141"
