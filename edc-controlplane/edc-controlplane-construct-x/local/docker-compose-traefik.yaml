@@ -1,0 +1,42 @@
+name: con-x-traefik
+services:
+  traefik:
+    container_name: traefik
+    image: traefik:v3.6
+    command:
+      - "--certificatesresolvers.edc-resolver.acme.email=${EMAIL:?Email must be set in the .env file}"
+    environment:
+      DOMAIN: ${DOMAIN:?${DOMAIN_MISSING_MESSAGE}} # TODO: Use env in read domain
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080" #dashboard, comment in production
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./acme.json:/acme.json"
+      - "./additional_config/traefik/traefik-static-conf.yaml:/etc/traefik/traefik.yaml"
+      - "./additional_config/traefik/traefik-dynamic-conf.yaml:/etc/traefik/config/dynamic.yaml"
+    healthcheck:
+      test: [ "CMD", "traefik", "healthcheck", "--ping" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - con-x-issuer-network
+      - con-x-server-network
+      - con-x-client-network
+
+networks:
+  con-x-client-network:
+    name: con-x-client-network
+    driver: bridge
+    external: true
+  con-x-server-network:
+    name: con-x-server-network
+    driver: bridge
+    external: true
+  con-x-issuer-network:
+    name: con-x-issuer-network
+    driver: bridge
+    external: true

@@ -1,0 +1,38 @@
+log:
+  level: TRACE
+
+providers:
+  docker:
+    watch: true
+    exposedByDefault: false
+    network: proxy
+  file:
+    directory: /etc/traefik/config # path to dynamic config
+
+# Comment out in production!
+api:
+  insecure: true #dashboard
+
+ping:
+  entryPoint: web
+
+entryPoints:
+  websecure:
+    address: :443
+  web:
+    address: :80
+#    # TODO: Only for tests!
+#    http:
+#      redirections:
+#        entryPoint:
+#          to: websecure
+#          scheme: https
+
+#certificatesResolvers:
+#  edc-resolver:
+#    acme:
+#      # email: test.mail@materna.group # Now defined in traefik-compose
+#      storage: acme.json
+#      httpChallenge:
+#        entryPoint: web
+#      #caServer: https://acme-staging-v02.api.letsencrypt.org/directory
