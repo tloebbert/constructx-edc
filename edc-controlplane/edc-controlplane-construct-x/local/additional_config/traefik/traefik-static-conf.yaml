@@ -9,9 +9,7 @@ providers:
   file:
     directory: /etc/traefik/config # path to dynamic config
 
-# Comment out in production!
-api:
-  insecure: true #dashboard
+api: true
 
 ping:
   entryPoint: web
@@ -21,12 +19,14 @@ entryPoints:
     address: :443
   web:
     address: :80
-#    # TODO: Only for tests!
-#    http:
-#      redirections:
-#        entryPoint:
-#          to: websecure
-#          scheme: https
+  #    # TODO: Only for tests!
+  #    http:
+  #      redirections:
+  #        entryPoint:
+  #          to: websecure
+  #          scheme: https
+  dashboard:
+    address: :8080
 
 #certificatesResolvers:
 #  edc-resolver:
