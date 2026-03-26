@@ -28,11 +28,11 @@ entryPoints:
   dashboard:
     address: :8080
 
-#certificatesResolvers:
-#  edc-resolver:
-#    acme:
-#      # email: test.mail@materna.group # Now defined in traefik-compose
-#      storage: acme.json
-#      httpChallenge:
-#        entryPoint: web
-#      #caServer: https://acme-staging-v02.api.letsencrypt.org/directory
+certificatesResolvers:
+  edc-resolver:
+    acme:
+      # email: test.mail@materna.group # Now defined in traefik-compose
+      storage: acme/acme.json
+      httpChallenge:
+        entryPoint: web
+      #caServer: https://acme-staging-v02.api.letsencrypt.org/directory

@@ -3,12 +3,12 @@ http:
     dashboard:
       entrypoints:
         - dashboard
-      rule: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
+      rule: Host(`{{ env "DOMAIN" }}`)
       service: api@internal
       middlewares:
         - auth
-  #      tls:
-  #        certresolver: edc-resolver
+      tls:
+        certresolver: edc-resolver
 
   middlewares:
     auth:
