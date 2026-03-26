@@ -15,7 +15,9 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "./acme.json:/acme.json"
       - "./additional_config/traefik/traefik-static-conf.yaml:/etc/traefik/traefik.yaml"
+      - "./additional_config/traefik/traefik-dashboard-conf.yaml:/etc/traefik/config/dashboard.yaml"
       - "./additional_config/traefik/traefik-dynamic-conf.yaml:/etc/traefik/config/dynamic.yaml"
+      - "./additional_config/traefik/pass.txt:/etc/traefik/config/pass.txt"
     healthcheck:
       test: [ "CMD", "traefik", "healthcheck", "--ping" ]
       interval: 30s

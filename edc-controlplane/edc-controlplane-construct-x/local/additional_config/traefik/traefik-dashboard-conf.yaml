@@ -1,0 +1,16 @@
+http:
+  routers:
+    dashboard:
+      entrypoints:
+        - dashboard
+      rule: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
+      service: api@internal
+      middlewares:
+        - auth
+  #      tls:
+  #        certresolver: edc-resolver
+
+  middlewares:
+    auth:
+      digestAuth:
+        usersFile: "/etc/traefik/config/pass.txt"
