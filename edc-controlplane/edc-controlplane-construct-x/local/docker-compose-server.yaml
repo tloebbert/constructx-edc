@@ -63,16 +63,13 @@ services:
       - edc.datasource.default.url=jdbc:postgresql://postgres-server:5432/prov_ih_db
       - edc.datasource.default.user=admin
       - edc.datasource.default.password=password
-      - edc.vault.hashicorp.url=http://vault-con-x.psi.de:8200
+      - edc.vault.hashicorp.url=http://construct-x.psilogistics.de:8200
       - edc.vault.hashicorp.health.check.enabled=true
       - edc.vault.hashicorp.token=vaultsecret0123456789
     volumes:
       - ./additional_config/logging.properties:/app/logging.properties
     networks:
       - con-x-server-network
-    extra_hosts:
-      - "vault-con-x.psi.de:88.99.97.141"
-      - "issuer-service-con-x.psi.de:88.99.97.141"
 
   provider-controlplane:
     container_name: provider-controlplane
@@ -92,7 +89,7 @@ services:
       - tx.edc.postgresql.migration.policy-monitor.enabled=false
       - tx.edc.postgresql.migration.policy.enabled=false
       - tx.edc.postgresql.migration.transferprocess.enabled=false
-      - edc.iam.trusted-issuer.example.id=did:web:issuer-service-con-x.psi.de%3A10000:con-x-issuer
+      - edc.iam.trusted-issuer.example.id=did:web:construct-x.psilogistics.de%3A10000:con-x-issuer
       - edc.iam.did.web.use.https=false
       - edc.iam.sts.oauth.client.secret.alias=providersecret
       - edc.iam.credential.revocation.mimetype=application/json
@@ -116,7 +113,7 @@ services:
       - edc.datasource.default.url=jdbc:postgresql://postgres-server:5432/prov_cpl
       - edc.datasource.default.user=admin
       - edc.datasource.default.password=password
-      - edc.vault.hashicorp.url=http://vault-con-x.psi.de:8200
+      - edc.vault.hashicorp.url=http://construct-x.psilogistics.de:8200
       - edc.vault.hashicorp.health.check.enabled=true
       - edc.vault.hashicorp.token=vaultsecret0123456789
     volumes:
@@ -133,9 +130,6 @@ services:
       - "39050:9050" # Control API - Custom Added
     networks:
       - con-x-server-network
-    extra_hosts:
-      - "vault-con-x.psi.de:88.99.97.141"
-      - "issuer-service-con-x.psi.de:88.99.97.141"
 
   provider-dataplane:
     container_name: provider-dataplane
@@ -158,10 +152,10 @@ services:
       - edc.sql.schema.autocreate=true
       - edc.transfer.proxy.token.signer.privatekey.alias=prov_priv
       - edc.transfer.proxy.token.verifier.publickey.alias=prov_pub
-      - edc.vault.hashicorp.url=http://vault-con-x.psi.de:8200
+      - edc.vault.hashicorp.url=http://construct-x.psilogistics.de:8200
       - edc.vault.hashicorp.health.check.enabled=true
       - edc.vault.hashicorp.token=vaultsecret0123456789
-      - edc.iam.trusted-issuer.example.id=did:web:issuer-service-con-x.psi.de%3A10000:con-x-issuer
+      - edc.iam.trusted-issuer.example.id=did:web:construct-x.psilogistics.de%3A10000:con-x-issuer
       - edc.iam.did.web.use.https=false
       - edc.iam.sts.oauth.client.secret.alias=providersecret
       - edc.iam.credential.revocation.mimetype=application/json
@@ -180,9 +174,6 @@ services:
       - "9550:9550" # Control API
     networks:
       - con-x-server-network
-    extra_hosts:
-      - "vault-con-x.psi.de:88.99.97.141"
-      - "issuer-service-con-x.psi.de:88.99.97.141"
 
 networks:
   con-x-server-network:

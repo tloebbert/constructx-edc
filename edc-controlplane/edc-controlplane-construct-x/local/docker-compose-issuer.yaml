@@ -38,8 +38,8 @@ services:
 
     environment:
       - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:1044
-      - edc.statuslist.callback.address=http://issuer-service-con-x.psi.de:9999/statuslist
-      - edc.hostname=issuer-service-con-x.psi.de
+      - edc.statuslist.callback.address=http://construct-x.psilogistics.de:9999/statuslist
+      - edc.hostname=construct-x.psilogistics.de
       - edc.ih.issuer.dev.defaultconfig=/app/setup.json
       - edc.issuer.issuance.send.retry.limit=0
       - edc.iam.did.web.use.https=false
@@ -59,9 +59,6 @@ services:
       - ./additional_config/logging.properties:/app/logging.properties
     networks:
       - con-x-issuer-network
-    extra_hosts:
-      - "vault-con-x.psi.de:88.99.97.141"
-      - "issuer-service-con-x.psi.de:88.99.97.141"
 
   vault-service:
     container_name: vault-service
@@ -81,9 +78,6 @@ services:
       - "8200:8200"
     networks:
       - con-x-issuer-network
-    extra_hosts:
-      - "vault-con-x.psi.de:88.99.97.141"
-      - "issuer-service-con-x.psi.de:88.99.97.141"
 
   vault-init:
     container_name: vault-init
@@ -101,10 +95,6 @@ services:
     restart: "no"
     networks:
       - con-x-issuer-network
-    extra_hosts:
-      - "vault-con-x.psi.de:88.99.97.141"
-      - "issuer-service-con-x.psi.de:88.99.97.141"
-
 
 networks:
   con-x-issuer-network:
