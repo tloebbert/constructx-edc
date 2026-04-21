@@ -93,8 +93,8 @@ services:
       - edc.iam.sts.oauth.client.secret.alias=consumersecret
       - edc.iam.credential.revocation.mimetype=application/json
       - edc.iam.sts.oauth.token.url=http://con-x.logproit.de:20500/api/sts/token
-      - edc.iam.sts.oauth.client.id=did:web:con-x.logproit.de%3A20000:user:consumer
-      - edc.iam.issuer.id=did:web:con-x.logproit.de%3A20000:user:consumer
+      - edc.iam.sts.oauth.client.id=did:web:con-x.logproit.de:user:consumer
+      - edc.iam.issuer.id=did:web:con-x.logproit.de:user:consumer
       - web.http.port=9000
       - web.http.path=/api
       - web.http.management.port=9010
@@ -106,7 +106,7 @@ services:
       - web.http.control.port=9050
       - web.http.control.path=/control
       - edc.hostname=con-x.logproit.de
-      - edc.participant.id=did:web:con-x.logproit.de%3A20000:user:consumer
+      - edc.participant.id=did:web:con-x.logproit.de:user:consumer
       - edc.dsp.callback.address=http://con-x.logproit.de:29020/dsp
       - edc.sql.schema.autocreate=true
       - edc.datasource.default.url=jdbc:postgresql://postgres-client:5432/cons_cpl
@@ -159,8 +159,8 @@ services:
       - edc.iam.sts.oauth.client.secret.alias=consumersecret
       - edc.iam.credential.revocation.mimetype=application/json
       - edc.iam.sts.oauth.token.url=http://con-x.logproit.de:20500/api/sts/token
-      - edc.iam.sts.oauth.client.id=did:web:con-x.logproit.de%3A20000:user:consumer
-      - edc.iam.issuer.id=did:web:con-x.logproit.de%3A20000:user:consumer
+      - edc.iam.sts.oauth.client.id=did:web:con-x.logproit.de:user:consumer
+      - edc.iam.issuer.id=did:web:con-x.logproit.de:user:consumer
     depends_on:
       postgres-client:
         condition: service_healthy
