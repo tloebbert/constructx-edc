@@ -37,7 +37,7 @@ services:
       - con-x-client-network
 
   consumer-idhub:
-    container_name: consumer-idhub-con-x.psi.de
+    container_name: consumer-idhub
     image: identityhub-dev:latest
     pull_policy: never
     depends_on:
@@ -71,7 +71,7 @@ services:
       - con-x-client-network
 
   consumer-controlplane:
-    container_name: consumer-controlplane-con-x.psi.de
+    container_name: consumer-controlplane
     image: con-x-controlplane-postgresql-hashicorp-vault:latest
     pull_policy: never
     environment:

@@ -23,8 +23,8 @@ services:
       retries: 3
       start_period: 10s
     networks:
-      - con-x-issuer-network
-      - con-x-server-network
+#      - con-x-issuer-network
+#      - con-x-server-network
       - con-x-client-network
 
 networks:
@@ -32,11 +32,11 @@ networks:
     name: con-x-client-network
     driver: bridge
     external: true
-  con-x-server-network:
-    name: con-x-server-network
-    driver: bridge
-    external: true
-  con-x-issuer-network:
-    name: con-x-issuer-network
-    driver: bridge
-    external: true
+#  con-x-server-network:
+#    name: con-x-server-network
+#    driver: bridge
+#    external: true
+#  con-x-issuer-network:
+#    name: con-x-issuer-network
+#    driver: bridge
+#    external: true
