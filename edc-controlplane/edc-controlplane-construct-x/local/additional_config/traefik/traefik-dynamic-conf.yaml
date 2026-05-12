@@ -62,32 +62,45 @@ http:
       tls:
     #        certresolver: edc-resolver
 
+    flask-api:
+      entrypoints:
+        - web
+        - websecure
+      rule: Host(`{{ env "DOMAIN" }}`) && PathPrefix(`/flask`)
+      service: flask-api-svc
+      tls:
+    #        certresolver: edc-resolver
+
   services:
     idhub-did-svc:
       loadBalancer:
         servers:
-          - url: http://provider-idhub
+          - url: http://consumer-idhub
     idhub-identity-svc:
       loadBalancer:
         servers:
-          - url: http://provider-idhub:15151
+          - url: http://consumer-idhub:15151
     idhub-sts-svc:
       loadBalancer:
         servers:
-          - url: http://provider-idhub:9292
+          - url: http://consumer-idhub:9292
     idhub-credentials-svc:
       loadBalancer:
         servers:
-          - url: http://provider-idhub:13131
+          - url: http://consumer-idhub:13131
     ctrl-management-svc:
       loadBalancer:
         servers:
-          - url: http://provider-controlplane:9010
+          - url: http://consumer-controlplane:9010
     ctrl-dsp-svc:
       loadBalancer:
         servers:
-          - url: http://provider-controlplane:9020
+          - url: http://consumer-controlplane:9020
     data-public-svc:
       loadBalancer:
         servers:
-          - url: http://provider-dataplane:9500
+          - url: http://consumer-dataplane:9500
+    flask-api-svc:
+      loadBalancer:
+        servers:
+          - url: http://flaskapi-flask-api:5000
