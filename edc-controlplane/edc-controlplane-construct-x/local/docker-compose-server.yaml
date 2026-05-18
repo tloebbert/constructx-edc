@@ -144,6 +144,7 @@ services:
       - web.http.control.port=9550
       - web.http.control.path=/control
       - edc.hostname=construct-x.psilogistics.de
+      - edc.transfer.proxy.endpoint=http://construct-x.psilogistics.de/public/ # @Fail _ Test
       - edc.dpf.selector.url=http://construct-x.psilogistics.de:39050/control/v1/dataplanes
       - edc.data.plane.self.unregistration=true
       - edc.datasource.default.url=jdbc:postgresql://postgres-server:5432/prov_dpl
