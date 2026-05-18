@@ -90,4 +90,4 @@ http:
     data-public-svc:
       loadBalancer:
         servers:
-          - url: http://provider-dataplane:80
+          - url: http://provider-dataplane:80 # @Fail - Public port should be 9500. Proxy port should work via configuration
