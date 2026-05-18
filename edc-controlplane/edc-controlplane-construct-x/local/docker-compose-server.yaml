@@ -137,14 +137,14 @@ services:
     pull_policy: if_not_present
     environment:
       - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0.0:5005
-      - web.http.public.port=9500
+      - web.http.public.port=80
       - web.http.public.path=/public
       - web.http.management.port=9510
       - web.http.management.path=/management
       - web.http.control.port=9550
       - web.http.control.path=/control
       - edc.hostname=construct-x.psilogistics.de
-      - edc.transfer.proxy.endpoint=http://construct-x.psilogistics.de/public/ # @Fail _ Test
+      # - edc.transfer.proxy.endpoint=http://construct-x.psilogistics.de/public/ # @Fail _ Test
       - edc.dpf.selector.url=http://construct-x.psilogistics.de:39050/control/v1/dataplanes
       - edc.data.plane.self.unregistration=true
       - edc.datasource.default.url=jdbc:postgresql://postgres-server:5432/prov_dpl
@@ -170,7 +170,7 @@ services:
     entrypoint: [ "java", "-jar", "edc-runtime.jar", "--log-level=DEBUG" ]
     ports:
       - "5007:5005"   # Debugger
-      - "9500:9500" # Public API
+      - "9500:80" # Public API
       - "9510:9510" # Management API
       - "9550:9550" # Control API
     networks:
