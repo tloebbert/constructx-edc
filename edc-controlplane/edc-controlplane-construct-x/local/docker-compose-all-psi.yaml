@@ -2,3 +2,4 @@ name: con-x-all
 include:
   - docker-compose-issuer.yaml
   - docker-compose-server.yaml
+  - docker-compose-traefik.yaml

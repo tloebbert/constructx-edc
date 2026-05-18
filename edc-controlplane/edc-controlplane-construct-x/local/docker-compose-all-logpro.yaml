@@ -1,0 +1,4 @@
+name: con-x-all
+include:
+  - docker-compose-client.yaml
+  - docker-compose-traefik.yaml
