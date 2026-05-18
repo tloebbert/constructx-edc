@@ -90,4 +90,4 @@ http:
     data-public-svc:
       loadBalancer:
         servers:
-          - url: http://provider-dataplane:80
+          - url: http://provider-dataplane:9500
