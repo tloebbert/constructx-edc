@@ -108,7 +108,7 @@ services:
       - web.http.control.path=/control
       - edc.hostname=construct-x.psilogistics.de
       - edc.participant.id=did:web:construct-x.psilogistics.de:user:provider
-      - edc.dsp.callback.address=http://construct-x.psilogistics.de:39020/dsp
+      - edc.dsp.callback.address=http://construct-x.psilogistics.de/dsp
       - edc.sql.schema.autocreate=true
       - edc.datasource.default.url=jdbc:postgresql://postgres-server:5432/prov_cpl
       - edc.datasource.default.user=admin
